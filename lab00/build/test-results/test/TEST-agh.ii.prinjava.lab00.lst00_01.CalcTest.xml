@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ii.prinjava.lab00.lst00_01.CalcTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-15T13:20:41" hostname="DESKTOP-22QSF2T" time="0.016">
+<testsuite name="agh.ii.prinjava.lab00.lst00_01.CalcTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-18T11:45:23" hostname="DESKTOP-22QSF2T" time="0.021">
   <properties/>
-  <testcase name="onePlusTwoIsThree()" classname="agh.ii.prinjava.lab00.lst00_01.CalcTest" time="0.016"/>
+  <testcase name="onePlusTwoIsThree()" classname="agh.ii.prinjava.lab00.lst00_01.CalcTest" time="0.021"/>
   <system-out><![CDATA[CalcTest.setUp...
 CalcTest.tearDown...
 ]]></system-out>
