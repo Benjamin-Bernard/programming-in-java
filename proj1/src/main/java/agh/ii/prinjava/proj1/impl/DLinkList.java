@@ -26,11 +26,13 @@ public class DLinkList<E> {
     int size;
 
     private static class Node<T> {
+        /**Creation a Node of a Doubly liked list*/
         T elem;
         Node<T> next;
         Node<T> prev;
 
         public Node(T elem ){
+            /**Constructor of a node */
             this.elem = elem;
             this.prev = null;
             this.next = null;
@@ -39,12 +41,21 @@ public class DLinkList<E> {
     }
     /**Add an element at the head of the list */
     public void addfirst(E e){
+        /**creation of a new node*/
         Node newNode = new Node(e);
+        /**two cases:
+         * Empty list
+         * List with one or more element
+         */
+
+        /**List with one or more element*/
+
         if(head != null){
             newNode.prev = null;
             newNode.next = head;
             head = newNode;
         }
+        /**Empty list*/
         else{
             head = tail = newNode;
             newNode.prev = null;

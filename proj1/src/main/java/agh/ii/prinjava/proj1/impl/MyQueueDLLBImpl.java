@@ -2,6 +2,20 @@ package agh.ii.prinjava.proj1.impl;
 
 import agh.ii.prinjava.proj1.MyQueue;
 
+/**
+ * A Queue in Java is a collection of entities that are maintained in a sequence and can be modified by addition of
+ * entities at one end of the sequence and the removal of entities from the other end of the sequence.
+ * This class represents the operations of a Queue List such as :
+ * <ul>
+ *     <li>enqueue method</li>
+ *     <li>dequeue method</li>
+ *     <li>peek method</li>
+ * </ul>
+ * This class implements MyQueue<E> interface and its methods
+ * */
+
+
+
 public class MyQueueDLLBImpl<E> implements MyQueue<E> {
     /**elems is a DLinkList which is used to implement Queue's operations*/
     private DLinkList<E> elems = new DLinkList<>() ;
