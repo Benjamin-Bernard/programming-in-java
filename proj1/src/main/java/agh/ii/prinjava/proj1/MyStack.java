@@ -13,7 +13,7 @@ public interface MyStack<E> {
 
     int numOfElems();
 
-    E peek();
+    E peek(); /** This method returns the last element put in the stack */
 
     /** Consider pros and cons of having a factory method in the interface */
     static <T> MyStack<T> create() {

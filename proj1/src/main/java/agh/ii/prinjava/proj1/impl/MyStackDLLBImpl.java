@@ -3,33 +3,83 @@ package agh.ii.prinjava.proj1.impl;
 import agh.ii.prinjava.proj1.MyStack;
 
 public class MyStackDLLBImpl<E> implements MyStack<E> {
-    private DLinkList<E> elems;
+    private DLinkList<E> elems =  new DLinkList<>();
 
-    public MyStackDLLBImpl() {
-        this.elems = new DLinkList<>();
-    }
 
+    /**
+     * This pop method is here in order to erase the last element put in the stack
+     * */
     @Override
     public E pop() {
-        if(elems == null)
-            throw new IllegalStateException("To be implemented");
-        else{
+        /**
+         * First we are dealing with the case where the Stack is empty
+         * */
+        if(isEmpty())
+            throw new IllegalStateException("Stack is empty");
 
+/**
+ * Then, we are dealing the case where there is something to erase.
+ * We call the removefirst method because we need to erase the last element put in the stack.
+ */
+        else{
+            elems.removeFirst();
         }
+        return null;
     }
 
     @Override
     public void push(E x) {
-        throw new IllegalStateException("To be implemented");
+        /**
+         * we are dealing the case where we can add an element in the stack
+         * */
+        if(elems != null)
+            elems.addfirst(x);
+
+        /**
+         * we are dealing the case where there is an error.
+         * */
+        else{
+            throw new IllegalStateException("To be implemented");
+        }
     }
 
     @Override
     public int numOfElems() {
-        throw new IllegalStateException("To be implemented");
+        return elems.listSize();
     }
 
     @Override
     public E peek() {
-        throw new IllegalStateException("To be implemented");
+        /**
+         * Case where the stack is empty
+         * */
+        if(isEmpty())
+            throw new IllegalStateException("To be implemented");
+
+        /**
+         * Case where the stack contains elements
+         * */
+        else{
+            return  elems.peekHead();
+        }
+    }
+
+    /**
+     * This is the method that lets us know if a list is empty or not :
+     * True means the list is empty
+     * False means the list contains elements
+     * */
+    @Override
+    public boolean isEmpty(){
+        return elems.size == 0;
+    }
+
+    /**
+     * It is thanks to this method that we can display the list in the console.
+     * It enables to print things
+     * */
+    @Override
+    public String toString(){
+        return elems.toString();
     }
 }

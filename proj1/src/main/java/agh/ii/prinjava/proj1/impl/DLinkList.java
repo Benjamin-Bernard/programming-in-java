@@ -1,27 +1,29 @@
 package agh.ii.prinjava.proj1.impl;
 
-
-import java.util.LinkedList;
+/**
+ <ul>
+ * <li>We are working on this project with doubly linked list </li>
+ * <li>A doubly linked list has an additional pointer known as the previous pointer </li>
+ * <li>and has the next pointer as in the singly linked list.</li>
+ *
+ </ul>*/
 
 public class DLinkList<E> {
     // ...
+    /**Critical positions of the list :
+     * head node
+     * tail node
+     * temp is a temporrary node ,we will use it in certain condition to travel all over the list
+     * */
 
-    Node head;
-    Node tail;
+    /** Head will be used to indicated the first element of the list so it's kind
+     * of a key that we shouldn't lose*/
+    Node<E> head;
+    /** tail will be used to indicated the last element of the list so it's kind of a key that we shouldn't lose*/
+    Node<E> tail;
+    Node<E> temp;
+    /** Variable that indicate the size of the list*/
     int size;
-
-    //Empty DLinkList
-    public DLinkList DLinkListNew(){
-       DLinkList pnew = new DLinkList();
-       if(pnew != null){
-           pnew.size = 0;
-           pnew.head = null;
-           pnew.tail = null;
-       }
-       return pnew;
-
-    }
-
 
     private static class Node<T> {
         T elem;
@@ -34,12 +36,8 @@ public class DLinkList<E> {
             this.next = null;
         }
 
-        public Node(){
-            this(null);
-        }
-
     }
-
+    /**Add an element at the head of the list */
     public void addfirst(E e){
         Node newNode = new Node(e);
         if(head != null){
@@ -52,13 +50,14 @@ public class DLinkList<E> {
             newNode.prev = null;
             newNode.next = null;
         }
-
+        /**update the new  size of the list t*/
         size++;
-
     }
 
+    /**Add an element at the end of the list*/
     public void addlast(E e){
-        Node newNode = new Node(e);
+        /**Creation a Node of a Doubly liked list*/
+        Node<E> newNode = new Node(e);
         if(head != null){
             newNode.prev = tail;
             tail.next = newNode;
@@ -73,76 +72,51 @@ public class DLinkList<E> {
         size ++;
     }
 
+    /**Remove the first element from the list*/
     public void removeFirst(){
-        Node temp;
         if(head != null){
-
             temp = head;
             head = temp.next;
             if(temp.next != null){
                 head.prev = null;
-
             }
             size --;
         }
 
     }
 
+    /**Remove the last element from the list*/
     public  void removeLast(){
-        Node temp;
         if(head != null){
-
             temp = head;
-            while(temp.next != null) {
+            while(temp.next.next != null) {
                 temp = temp.next;
             }
-            if(temp.prev != null)
-                temp.prev.next = null;
-            else
-                head = null;
+            temp.next = null;
+            tail = temp;
             size --;
         }
 
     }
 
-  /*  public void delete(DLinkList dl){
-        if(dl != null){
-            Node temp = new Node<>();
-            temp = dl.head;
-
-            while(temp != null){
-                Node del = new Node<>();
-                del = temp;
-                temp = del.
-            }
-
-        }
-    }*/
-
+    /**Return the head node of the list*/
+    public E peekHead(){
+        Node<E> n = head;
+        return n.elem;
+    }
+    /**Return the tail node of the list*/
+    public E peekTail(){
+        Node<E> n = tail;
+        return n.elem;
+    }
+    /**Return the size of the list*/
     public int listSize(){
             return size;
     }
-/*
-    public void printNodes() {
-        //Node current will point to head
-        Node current = head;
-        if(head == null) {
-            System.out.println("Doubly linked list is empty");
-            return;
-        }
-        System.out.println("Nodes of doubly linked list: ");
-        while(current != null) {
-            //Print each node and then go to next.
-            System.out.print(current.elem + " ");
-            current = current.next;
-        }
-        //System.out.println("\n" + head.elem + "\n" + tail.elem);
-    }*/
-
+    /**toSTring method of the list*/
     @Override
     public String toString(){
-        String s = "";
-        //Node current will point to head
+        StringBuilder s = new StringBuilder();
         Node current = head;
         if(head == null) {
             return "Doubly linked list is empty";
@@ -150,10 +124,10 @@ public class DLinkList<E> {
         System.out.println("Nodes of doubly linked list: ");
         while(current != null) {
             //Print each node and then go to next.
-            s+= current.elem + " ";
+            s.append(current.elem).append(" ");
             current = current.next;
         }
-        return s;
+        return s.toString();
     }
 
 }
