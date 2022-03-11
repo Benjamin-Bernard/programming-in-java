@@ -2,6 +2,8 @@ package agh.ii.prinjava.proj1.impl;
 
 import agh.ii.prinjava.proj1.MyStack;
 
+/** <p>This class is where all method are concerning the stack </p> */
+
 public class MyStackDLLBImpl<E> implements MyStack<E> {
     private DLinkList<E> elems =  new DLinkList<>();
 
@@ -27,6 +29,7 @@ public class MyStackDLLBImpl<E> implements MyStack<E> {
         return null;
     }
 
+    /** This push method is here in order to add an element in the stack */
     @Override
     public void push(E x) {
         /**
@@ -43,10 +46,19 @@ public class MyStackDLLBImpl<E> implements MyStack<E> {
         }
     }
 
+
+    /**
+     * This is the method that return the list size
+     * */
     @Override
     public int numOfElems() {
         return elems.listSize();
     }
+
+
+    /**
+     * This is the method that returns the last element put in the stack.
+     * */
 
     @Override
     public E peek() {
