@@ -27,7 +27,7 @@ public class MyQueueDLLBImpl<E> implements MyQueue<E> {
          * if it is True then we had add the element to the Queue.
          * */
         if(isEmpty() || elems != null)
-            elems.addfirst(x);
+            elems.addFirst(x);
         else{ /**If conditions are not fulfill this exception is thrown */
             throw new IllegalStateException("The queue is full");
         }

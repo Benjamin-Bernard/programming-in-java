@@ -40,7 +40,7 @@ public class DLinkList<E> {
 
     }
     /**Add an element at the head of the list */
-    public void addfirst(E e){
+    public void addFirst(E e){
         /**creation of a new node*/
         Node newNode = new Node(e);
         /**two cases:
@@ -66,7 +66,7 @@ public class DLinkList<E> {
     }
 
     /**Add an element at the end of the list*/
-    public void addlast(E e){
+    public void addLast(E e){
         /**Creation a Node of a Doubly liked list*/
         Node<E> newNode = new Node(e);
         if(head != null){

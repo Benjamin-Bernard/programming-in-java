@@ -2,46 +2,49 @@ package agh.ii.prinjava.proj1.impl;
 
 import agh.ii.prinjava.proj1.MyStack;
 
-/** <p>This class is where all method are concerning the stack </p> */
+/**
+ * <p>This class is where all method are concerning the stack </p>
+ */
 
 public class MyStackDLLBImpl<E> implements MyStack<E> {
-    private DLinkList<E> elems =  new DLinkList<>();
+    private DLinkList<E> elems = new DLinkList<>();
 
 
     /**
      * This pop method is here in order to erase the last element put in the stack
-     * */
+     */
     @Override
     public E pop() {
         /**
          * First we are dealing with the case where the Stack is empty
          * */
-        if(isEmpty())
+        if (isEmpty())
             throw new IllegalStateException("Stack is empty");
 
-/**
- * Then, we are dealing the case where there is something to erase.
+/* Then, we are dealing the case where there is something to erase.
  * We call the removefirst method because we need to erase the last element put in the stack.
  */
-        else{
+        else {
             elems.removeFirst();
         }
         return null;
     }
 
-    /** This push method is here in order to add an element in the stack */
+    /**
+     * This push method is here in order to add an element in the stack
+     */
     @Override
     public void push(E x) {
         /**
          * we are dealing the case where we can add an element in the stack
          * */
-        if(elems != null)
-            elems.addfirst(x);
+        if (elems != null)
+            elems.addFirst(x);
 
         /**
          * we are dealing the case where there is an error.
          * */
-        else{
+        else {
             throw new IllegalStateException("To be implemented");
         }
     }
@@ -49,7 +52,7 @@ public class MyStackDLLBImpl<E> implements MyStack<E> {
 
     /**
      * This is the method that return the list size
-     * */
+     */
     @Override
     public int numOfElems() {
         return elems.listSize();
@@ -58,21 +61,21 @@ public class MyStackDLLBImpl<E> implements MyStack<E> {
 
     /**
      * This is the method that returns the last element put in the stack.
-     * */
+     */
 
     @Override
     public E peek() {
         /**
          * Case where the stack is empty
          * */
-        if(isEmpty())
+        if (isEmpty())
             throw new IllegalStateException("To be implemented");
 
         /**
          * Case where the stack contains elements
          * */
-        else{
-            return  elems.peekHead();
+        else {
+            return elems.peekHead();
         }
     }
 
@@ -80,18 +83,18 @@ public class MyStackDLLBImpl<E> implements MyStack<E> {
      * This is the method that lets us know if a list is empty or not :
      * True means the list is empty
      * False means the list contains elements
-     * */
+     */
     @Override
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return elems.size == 0;
     }
 
     /**
      * It is thanks to this method that we can display the list in the console.
      * It enables to print things
-     * */
+     */
     @Override
-    public String toString(){
+    public String toString() {
         return elems.toString();
     }
 }

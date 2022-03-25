@@ -3,13 +3,13 @@ package agh.ii.prinjava.proj1.impl;
 public class Main {
     public static void main(String[] args){
         DLinkList d = new DLinkList();
-        d.addfirst(1);
-        d.addfirst(2);
-        d.addfirst(3);
-        d.addfirst(4);
-        d.addfirst(5);
-        d.addfirst(2);
-        d.addfirst(15);
+        d.addFirst(1);
+        d.addFirst(2);
+        d.addFirst(3);
+        d.addFirst(4);
+        d.addFirst(5);
+        d.addFirst(2);
+        d.addFirst(15);
         System.out.println(d);
         d.removeFirst();
         d.removeLast();

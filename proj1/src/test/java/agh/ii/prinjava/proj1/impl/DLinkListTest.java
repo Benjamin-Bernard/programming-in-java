@@ -11,11 +11,11 @@ class DLinkListTest {
 
     @BeforeEach
     void setUp() {
-        dLinkList.addfirst(1);
-        dLinkList.addfirst(2);
-        dLinkList.addfirst(3);
-        dLinkList.addfirst(4);
-        dLinkList.addfirst(5);
+        dLinkList.addFirst(1);
+        dLinkList.addFirst(2);
+        dLinkList.addFirst(3);
+        dLinkList.addFirst(4);
+        dLinkList.addFirst(5);
 
     }
 
@@ -25,14 +25,14 @@ class DLinkListTest {
 
     @Test
     void addfirst() {
-      dLinkList.addfirst(6);
+      dLinkList.addFirst(6);
       assertEquals(6,dLinkList.peekHead());
       assertEquals(6,dLinkList.listSize());
     }
 
     @Test
     void addlast() {
-        dLinkList.addlast(7);
+        dLinkList.addLast(7);
         assertEquals(7,dLinkList.peekTail());
         assertEquals(6,dLinkList.listSize());
     }
@@ -58,7 +58,7 @@ class DLinkListTest {
 
     @Test
     void peekTail() {
-        assertEquals(2, dLinkList.peekTail());
+        assertEquals(1, dLinkList.peekTail());
     }
 
     @Test
