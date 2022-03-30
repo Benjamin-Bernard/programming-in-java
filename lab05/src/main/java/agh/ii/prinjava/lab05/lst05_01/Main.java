@@ -1,6 +1,7 @@
 package agh.ii.prinjava.lab05.lst05_01;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * <p>The {@link List} interface extends the {@link Collection} interface -
@@ -179,5 +180,20 @@ public class Main implements Iterable{
         demo5();
         demo6();
         demo7();
+    }
+
+    @Override
+    public Iterator iterator() {
+        return null;
+    }
+
+    @Override
+    public void forEach(Consumer action) {
+        Iterable.super.forEach(action);
+    }
+
+    @Override
+    public Spliterator spliterator() {
+        return Iterable.super.spliterator();
     }
 }

@@ -55,7 +55,7 @@ public class Main {
     private static void demo1() {
         System.out.println("demo1...");
         List<Box1<Integer>> boxes = new LinkedList<>();
-        boxes.remove(1)
+        boxes.remove(1);
         fillTheListOfBox1(boxes);
         System.out.println("boxes = " + boxes);
 
