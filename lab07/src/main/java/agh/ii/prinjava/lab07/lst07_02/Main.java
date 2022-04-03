@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  */
 public class Main {
     private static final List<Integer> LIST1 = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
-    private static final List<Integer> LIST2 = List.of(1, 50, 3, 100, 30, 20, 7, 8, 9);
+    private static final List<Integer> LIST2 = List.of(1, 50, 3, 10, 100, 20, 7, 8, 9);
     private static final List<Integer> LIST3 = List.of(3, 5, 1, 9, 6, 2, 7, 3, 2, 1, 9, 4, 8, 5, 6, 4, 7, 1, 8, 9, 1);
 
     /**
@@ -29,7 +29,7 @@ public class Main {
         System.out.println("LIST1: " + LIST1);
 
         Stream<Integer> iStr = LIST1.stream();
-        iStr.skip(4).forEach(System.out::println);
+        iStr.skip(3).forEach(System.out::println);
     }
 
     /**

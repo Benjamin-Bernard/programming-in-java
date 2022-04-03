@@ -20,7 +20,6 @@ public class Main {
         final Optional<List<Movie>> movies = ImdbTop250.movies();
 
         final List<String> top10Movies = movies.orElseThrow().stream()
-                .limit(10)
                 .map(m -> m.rank() + ". " + m.title() + ", " + m.rating())
                 .toList();
         top10Movies.forEach(System.out::println);
@@ -49,7 +48,7 @@ public class Main {
         optMovies.orElseThrow().stream()
                 .collect(
                         Collectors.groupingBy(
-                                Movie::year,
+                                m -> m.director(),
                                 Collectors.counting()
                         )
                 )
@@ -63,6 +62,7 @@ public class Main {
         System.out.println("\ndemo3...");
         final Optional<List<Movie>> optMovies = ImdbTop250.movies();
         optMovies.orElseThrow().stream()
+
                 .collect(
                         Collectors.groupingBy(
                                 Movie::director,
@@ -70,6 +70,7 @@ public class Main {
                         )
                 )
                 .forEach((k, v) -> System.out.println(k + " => " + v));
+
     }
 
     /**

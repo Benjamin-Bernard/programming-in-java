@@ -73,7 +73,7 @@ public class Main {
 
         // Collection to a set (of the given type)
         final Set<String> paAsSet2 = PHONETIC_ALPHABET.stream()
-                .map(String::toUpperCase)
+                //.map(String::toUpperCase)
                 // ...
                 .collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
         System.out.println("---\npaAsSet (TreeSet): " + paAsSet2);

@@ -68,7 +68,7 @@ public class Main {
         System.out.println("---");
 
         // Stream.of(...) - a finite source
-        Stream<Integer> s2 = Stream.of(1, 2, 3, 4, 5); // finite source
+        Stream<Integer> s2 = Stream.of(1, 2, 3, 4, 5,6); // finite source
         s2.forEach(System.out::println);
         System.out.println("---");
     }
@@ -86,7 +86,7 @@ public class Main {
         Stream<Integer> s3 = Stream.generate(sup);
         // s3.forEach(System.out::println); // <- this will run forever!
         // to overcome this
-        s3.limit(5).forEach(System.out::println); // limit(n)
+        s3.limit(4).forEach(System.out::println); // limit(n)
         System.out.println("---");
 
         // Stream.iterate(T seed, UnaryOperator<T> f), infinite source: seed, f(seed), f(f(seed)),...
@@ -130,7 +130,7 @@ public class Main {
         stream2.forEach(System.out::println);
     }
 
-    /**
+     /**
      * To stream a map one needs to get a stream of entries from its {@code entrySet()}, i.e.,
      * <p>{@code Stream<Map.Entry<K,V>> stream = map.entrySet().stream()}
      */

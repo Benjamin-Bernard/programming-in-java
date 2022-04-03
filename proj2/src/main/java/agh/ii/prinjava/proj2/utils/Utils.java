@@ -1,5 +1,6 @@
 package agh.ii.prinjava.proj2.utils;
 
+import agh.ii.prinjava.proj2.dal.ImdbTop250;
 import agh.ii.prinjava.proj2.model.Movie;
 
 import java.util.*;
@@ -102,4 +103,6 @@ public interface Utils {
         return movies;
     }
 }
+
+
 
