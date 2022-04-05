@@ -147,7 +147,7 @@ interface PlayWithMovies {
                         Collectors.toMap(e -> e.getKey(),e -> e.getValue())
                 );
 
-        System.out.println(fiveMostFreqActorDuos);
+    //   System.out.println(fiveMostFreqActorDuos);
         return fiveMostFreqActorDuos;
     }
 
@@ -155,12 +155,23 @@ interface PlayWithMovies {
      * Returns the movies (only titles) of each of the 5 most frequent actor partnerships
      */
     static Map<String, Set<String>> ex10() {
-        final Map<String, Set<String>> moviesPerActorsDuos = ex08().keySet().stream()
+        final  Set<String> ActorDuos = ex09().keySet();
+        final Map<String, List<Movie> >  l= movies.orElseThrow().stream()
+                .map(Utils::oneToManyByActorDuo)
+                .flatMap(Collection::stream)
+                .filter(m -> ActorDuos.contains(m.actors().get(0)))
                 .collect(
-                        Collectors.toMap(e -> e.getKey(),e -> ex02(e.getKey().split()))
+                        Collectors.groupingBy(m -> m.actors().get(0))
                 );
-        System.out.println(moviesPerActorsDuos);
-        return null;
+
+        final Map<String, Set<String>> moviesPerActorDuo =l.entrySet().stream()
+                .collect(
+                        Collectors.toMap(Map.Entry::getKey, m->m.getValue().stream()
+                                .map(f->f.title())
+                                .collect(Collectors.toSet()))
+
+                );
+        return moviesPerActorDuo;
     }
 }
 
