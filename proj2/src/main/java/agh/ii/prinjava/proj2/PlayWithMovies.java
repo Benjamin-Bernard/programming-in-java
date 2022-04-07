@@ -16,8 +16,6 @@ interface PlayWithMovies {
      * Returns the movies (only titles) directed (or co-directed) by a given director
      */
     static Set<String> ex01(String director) {
-      //  final Optional<List<Movie>> movies = ImdbTop250.movies();
-
         final Set<String> moviesDirected = movies.orElseThrow().stream()
                 .filter(m -> m.directors().contains(director))
                 .map(m -> "" + m.title())
@@ -29,13 +27,10 @@ interface PlayWithMovies {
      * Returns the movies (only titles) in which an actor played
      */
     static Set<String> ex02(String actor) {
-       // final Optional<List<Movie>> movies = ImdbTop250.movies();
-
         final Set<String> moviesActors = movies.orElseThrow().stream()
                 .filter(m -> m.actors().contains(actor))
                 .map(m -> "" + m.title())
                 .collect(Collectors.toSet());
-      //  System.out.println(moviesActors);
         return moviesActors;
     }
 
@@ -43,7 +38,6 @@ interface PlayWithMovies {
      * Returns the number of movies per director (as a map)
      */
     static Map<String, Long> ex03() {
-        //  final Optional<List<Movie>> movies = ImdbTop250.movies();
           final Map<String, Long> nbMoviesPerDirector = movies.orElseThrow().stream()
                   .map(Utils::oneToManyByDirector)
                   .flatMap(Collection::stream)
@@ -53,10 +47,10 @@ interface PlayWithMovies {
                           )
                   )
                   ;
-
           return nbMoviesPerDirector;
 
     }
+
 
     /**
      * Returns the 10 directors with the most films on the list
@@ -87,7 +81,6 @@ interface PlayWithMovies {
      * Returns the number of movies per actor (as a map)
      */
     static Map<String, Long> ex06() {
-        //final Optional<List<Movie>> movies = ImdbTop250.movies();
         final Map<String, Long> nbMoviesPerActor = movies.orElseThrow().stream()
                 .map(Utils::oneToManyByActor)
                 .flatMap(Collection::stream)
@@ -130,7 +123,6 @@ interface PlayWithMovies {
      * Returns the 5 most frequent actor partnerships (i.e., appearing together most often)
      */
     static Map<String, Long> ex09() {
-      //  final Optional<List<Movie>> movies = ImdbTop250.movies();
         final Map<String, Long> nbMoviesPerActorDuos = movies.orElseThrow().stream()
                 .map(Utils::oneToManyByActorDuo)
                 .flatMap(Collection::stream)
@@ -146,8 +138,6 @@ interface PlayWithMovies {
                 .collect(
                         Collectors.toMap(e -> e.getKey(),e -> e.getValue())
                 );
-
-    //   System.out.println(fiveMostFreqActorDuos);
         return fiveMostFreqActorDuos;
     }
 
