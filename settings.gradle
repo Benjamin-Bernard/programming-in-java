@@ -8,5 +8,7 @@ include 'proj1'
 include 'lab05'
 include 'lab06'
 include 'lab07'
+include 'lab09'
 include 'proj2'
+include 'proj3'
 

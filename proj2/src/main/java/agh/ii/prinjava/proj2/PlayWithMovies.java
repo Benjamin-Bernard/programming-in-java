@@ -16,11 +16,11 @@ interface PlayWithMovies {
      * Returns the movies (only titles) directed (or co-directed) by a given director
      */
     static Set<String> ex01(String director) {
-        final Set<String> moviesDirected = movies.orElseThrow().stream()
+
+        return  movies.orElseThrow().stream()
                 .filter(m -> m.directors().contains(director))
-                .map(m -> "" + m.title())
+                .map(Movie::title)
                 .collect(Collectors.toSet());
-        return moviesDirected;
     }
 
     /**
