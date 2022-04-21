@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ii.prinjava.proj2.PlayWithMoviesTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2022-04-08T10:47:50" hostname="DESKTOP-22QSF2T" time="0.125">
+<testsuite name="agh.ii.prinjava.proj2.PlayWithMoviesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-21T13:29:39" hostname="DESKTOP-22QSF2T" time="0.071">
   <properties/>
-  <testcase name="testEx01()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.08"/>
-  <testcase name="testEx02()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.002"/>
-  <testcase name="testEx03()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.012"/>
-  <testcase name="testEx04()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.003"/>
-  <testcase name="testEx05()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.003"/>
-  <testcase name="testEx06()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.002"/>
-  <testcase name="testEx07()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.003"/>
-  <testcase name="testEx08()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.002"/>
-  <testcase name="testEx09()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.006"/>
-  <testcase name="testEx10()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.007"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testEx09()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.071"/>
+  <system-out><![CDATA[{Carrie Fisher, Harrison Ford=4, Harrison Ford, Mark Hamill=4, Christian Bale, Michael Caine=3, Carrie Fisher, Mark Hamill=4, Joe Pesci, Robert De Niro=4}
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -138,6 +138,7 @@ interface PlayWithMovies {
                 .collect(
                         Collectors.toMap(e -> e.getKey(),e -> e.getValue())
                 );
+        System.out.println(fiveMostFreqActorDuos);
         return fiveMostFreqActorDuos;
     }
 
@@ -153,6 +154,7 @@ interface PlayWithMovies {
                 .collect(
                         Collectors.groupingBy(m -> m.actors().get(0))
                 );
+        System.out.println(l);
 
         final Map<String, Set<String>> moviesPerActorDuo =l.entrySet().stream()
                 .collect(
@@ -161,6 +163,7 @@ interface PlayWithMovies {
                                 .collect(Collectors.toSet()))
 
                 );
+        System.out.println(moviesPerActorDuo);
         return moviesPerActorDuo;
     }
 }

@@ -1,12 +1,8 @@
 package agh.ii.prinjava.proj3.dal;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.sql.*;
+
+import java.util.*;
 
 /**
  * Movie Data Access Object
@@ -27,7 +23,14 @@ public class MovieDAO {
         try (Connection con = DriverManager.getConnection(dbURL);
              PreparedStatement stmt = con.prepareStatement(MovieSQLs.moviesOfDirectorSQL)) {
             //TODO complete implementation of ex01
-            throw new RuntimeException("ex01: moviesDirectedBy not implemented");
+            stmt.setString(1,directorName);
+            ResultSet res = stmt.executeQuery();
+            Set<String> movies = new HashSet<>();
+            while(res.next()){
+                movies.add(res.getString("title"));
+
+            }return Optional.of(movies);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,7 +44,13 @@ public class MovieDAO {
         try (Connection con = DriverManager.getConnection(dbURL);
              PreparedStatement stmt = con.prepareStatement(MovieSQLs.moviesOfActorSQL)) {
             //TODO complete implementation of ex02
-            throw new RuntimeException("ex02: moviesTheActorPlayedIn not implemented");
+            stmt.setString(1,actorName);
+            ResultSet res = stmt.executeQuery();
+            Set<String> movies = new HashSet<>();
+            while(res.next()){
+                movies.add(res.getString("title"));
+
+            }return Optional.of(movies);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -53,7 +62,17 @@ public class MovieDAO {
      */
     public Optional<Map<String, Long>> numberOfMoviesPerDirector() {
         //TODO complete implementation of ex03
-        throw new RuntimeException("ex03: numberOfMoviesPerDirector not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.numberOfMoviesPerDirectorSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Long> nbMovies = new HashMap<>();
+            while(res.next()){
+                nbMovies.put(res.getString("director"),res.getLong("numOfMovies"));
+            }return Optional.of(nbMovies);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -61,7 +80,17 @@ public class MovieDAO {
      */
     public Optional<Map<String, Long>> numberOfMoviesPerTop10Director() {
         //TODO complete implementation of ex04
-        throw new RuntimeException("ex04: numberOfMoviesPerTop10Director not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.numOfMoviesPerTop10DirectorSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Long> nbMovies = new HashMap<>();
+            while(res.next()){
+                nbMovies.put(res.getString("director"),res.getLong("numOfMovies"));
+            }return Optional.of(nbMovies);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -69,7 +98,18 @@ public class MovieDAO {
      */
     public Optional<Map<String, Set<String>>> moviesPerTop10Director() {
         //TODO complete implementation of ex05
-        throw new RuntimeException("ex04: moviesPerTop10Director not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.moviesOfTop10DirectorsSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Set<String>> moviesTop10 = new HashMap<>();
+            while(res.next()){
+                moviesTop10.put(res.getString("director"),moviesDirectedBy(res.getString("director")).orElseThrow());
+            }
+            return Optional.of(moviesTop10);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -77,7 +117,17 @@ public class MovieDAO {
      */
     public Optional<Map<String, Long>> numberOfMoviesPerActor() {
         //TODO complete implementation of ex06
-        throw new RuntimeException("ex06: numberOfMoviesPerActor not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.numberOfMoviesPerActorSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Long> nbMovies = new HashMap<>();
+            while(res.next()){
+                nbMovies.put(res.getString("actor"),res.getLong("numOfMovies"));
+            }return Optional.of(nbMovies);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -85,7 +135,17 @@ public class MovieDAO {
      */
     public Optional<Map<String, Long>> numberOfMoviesPerTop9Actor() {
         //TODO complete implementation of ex07
-        throw new RuntimeException("ex07: numberOfMoviesPerTop9Actor not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.numOfMoviesPerTop9ActorSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Long> top9Actor = new HashMap<>();
+            while(res.next()){
+                top9Actor.put(res.getString("actor"),res.getLong("numOfMovies"));
+            }return Optional.of(top9Actor);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -93,7 +153,17 @@ public class MovieDAO {
      */
     public Optional<Map<String, Set<String>>> moviesPerTop9Actor() {
         //TODO complete implementation of ex08
-        throw new RuntimeException("ex08: moviesPerTop9Actor not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.moviesOfTop9ActorSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Set<String>> moviesTop9 = new HashMap<>();
+            while(res.next()){
+                moviesTop9.put(res.getString("actor"),moviesTheActorPlayedIn(res.getString("actor")).orElseThrow());
+            }return Optional.of(moviesTop9);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -101,7 +171,18 @@ public class MovieDAO {
      */
     public Optional<Map<String, Long>> top5FrequentActorPartnerships() {
         //TODO complete implementation of ex09
-        throw new RuntimeException("ex09: top5FrequentActorPartnerships not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.top5ActorPartnershipsSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Long> top5ActorDuos = new HashMap<>();
+            while(res.next()){
+                top5ActorDuos.put(res.getString("actor1") + ", " + res.getString("actor2"),res.getLong("cnt"));
+            }
+            return Optional.of(top5ActorDuos);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     /**
@@ -109,13 +190,33 @@ public class MovieDAO {
      */
     public Optional<Map<String, Set<String>>> moviesPerTop5ActorPartnerships() {
         //TODO complete implementation of ex10
-        throw new RuntimeException("ex09: moviesPerTop5ActorPartnerships not implemented");
+        try (Connection con = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = con.prepareStatement(MovieSQLs.moviesOfTop5ActorPartnershipsSQL)) {
+            ResultSet res = stmt.executeQuery();
+            Map<String,Set<String>> movies = new HashMap<>();
+            Set<String> title = new HashSet<>();
+            String actorDuos;
+            while(res.next()){
+                actorDuos = res.getString("actor1") + ", " + res.getString("actor2");
+                if(movies.containsKey(actorDuos)){
+                    movies.get(actorDuos).add(res.getString("title"));
+                }else{
+                    title.add(res.getString("title"));
+                    movies.put(actorDuos,new HashSet<>(title));
+                    title.clear();
+                }
+            }
+            return Optional.of(movies);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }
 
 class MovieSQLs {
     // ex01
-    static final String moviesOfDirectorSQL = """
+    static final String moviesOfDirectorSQL = """ 
             SELECT m.title AS title
             FROM movies m, movie_directors md, directors d
             WHERE m.id = md.movie_id AND md.director_id = d.id AND d.name = ?

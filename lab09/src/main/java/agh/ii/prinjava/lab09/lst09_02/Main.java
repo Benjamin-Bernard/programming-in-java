@@ -1,6 +1,8 @@
 package agh.ii.prinjava.lab09.lst09_02;
 
 import java.sql.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     private static final String dbURL = "jdbc:sqlite:lab09/datasources/lab09_sqlite.db";
